@@ -1,7 +1,5 @@
 # HidroCL-WaterBodyArea
 
-![logo](assets/logo.png)
-
 ## Description
 
 This repository contains 4 files to compute the water body area of a reservoir using the HidroCL dataset. The files are:
@@ -21,3 +19,7 @@ This repository contains 4 files to compute the water body area of a reservoir u
 ## Reference
 
 Donchyts, G., Winsemius, H., Baart, F. *et al*. High-resolution surface water dynamics in Earth’s small and medium-sized reservoirs. *Sci Rep* **12**, 13776 (2022). https://doi.org/10.1038/s41598-022-17074-6
+
+<div align="center">
+    <img src="assets/logo.png" width="300" aspect=1>
+</div>
