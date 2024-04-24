@@ -1,10 +1,14 @@
 import geopandas as gpd
+import os
+import dotenv
 
-servacc_cred = ''
-service_account = ''
+dotenv.load_dotenv()
+
+servacc_cred = os.getenv('GEE_JSON')
+service_account = 'earthengine@ee-atapia.iam.gserviceaccount.com'
 
 vpath = 'Data/hidrocl_boundaries.geojson'
-dbpath = 'Output/hi_o_gww_rs_tot_b_none_d1_p0d.csv'
+dbpath = os.getenv('WB_PATH')
 
 def configure_layers(option='old'):
     """Set layers to be used in the code
@@ -25,7 +29,7 @@ def configure_layers(option='old'):
         lyr = "projects/global-water-watch/assets/reservoirs-all-v1-0"
 
     if option=='new':
-        gdf = gpd.read_file("Data/water_bodies.geojson",
+        gdf = gpd.read_file("dbmanager/HidroCL-WaterBodyArea/src/Data/water_bodies.geojson",
                            driver='GeoJSON')
         ids = gdf.fid.to_list()
 
