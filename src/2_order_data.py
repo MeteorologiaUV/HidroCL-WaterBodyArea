@@ -16,6 +16,8 @@ files = [f for f in files if f.endswith('.csv')]
 # get unique ids
 ids = [f.split('_')[0] for f in files]
 
+ids = [val for val in ids if 'hi' not in val]
+
 # remove duplicates
 ids = list(set(ids))
 
@@ -27,9 +29,16 @@ for id in ids:
     files2 = [f for f in files if f.split('_')[0] == id]
     # read files
     dfs = [pd.read_csv(os.path.join(in_path, f)) for f in files2]
+    l = []
+    # check is has at least one row
+    for df in dfs:
+        if df.shape[0] > 0:
+            l.append(df)
+    if len(l) == 0:
+        continue
     # concat files
-    df = pd.concat(dfs)
-    # check if df is empty:
+    df = pd.concat(l)
+    # check if df is empty
     if df.empty:
         continue
     else:
