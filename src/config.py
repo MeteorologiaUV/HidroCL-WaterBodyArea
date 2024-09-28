@@ -9,6 +9,7 @@ service_account = 'earthengine@ee-atapia.iam.gserviceaccount.com'
 
 vpath = 'Data/hidrocl_boundaries.geojson'
 dbpath = os.getenv('WB_PATH')
+geojson = os.getenv('GEOJSON')
 
 def configure_layers(option='old'):
     """Set layers to be used in the code
@@ -29,7 +30,7 @@ def configure_layers(option='old'):
         lyr = "projects/global-water-watch/assets/reservoirs-all-v1-0"
 
     if option=='new':
-        gdf = gpd.read_file("dbmanager/HidroCL-WaterBodyArea/src/Data/water_bodies.geojson",
+        gdf = gpd.read_file(geojson,
                            driver='GeoJSON')
         ids = gdf.fid.to_list()
 
